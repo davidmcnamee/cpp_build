@@ -10,6 +10,7 @@ For an equivalent bazel implementation *with Gazelle* (translated to Go), see [t
 ## GNU Make
 
 > Important Files: [Makefile](https://github.com/davidmcnamee/cpp_build/blob/main/Makefile)
+> Run `make main && ./main` to run the program.
 
 In the GNU Make version, build rules are defined as imperative scripts. For example, to build a `.o` file, you must run `g++ -std=c++14 -Wall -c myfile.cc -o myfile.o`. This can be a lot to remember, so developers would start using GNU Make "macros" to simplify it all. But with all these macros, Makefiles started to get really complex. (Ironic, isn't it?)
 
@@ -18,6 +19,7 @@ As well, Makefiles are single-threaded by default. That means only one file can 
 ## Bazel
 
 > Important Files: [strings/BUILD.bazel](https://github.com/davidmcnamee/cpp_build/blob/bazel/strings/BUILD.bazel), [BUILD.bazel](https://github.com/davidmcnamee/cpp_build/blob/bazel/BUILD.bazel), [WORKSPACE](https://github.com/davidmcnamee/cpp_build/blob/bazel/WORKSPACE)
+> Run `bazel run //:app` to run the program.
 
 In Bazel, build rules are defined by someone else, and we just import them into our project. Then we use those build rules to define build *targets*.
 
@@ -28,6 +30,7 @@ Under the hood, bazel paralellizes builds by default. It also caches build artif
 > Important Files: [BUILD.bazel](https://github.com/davidmcnamee/cpp_build/blob/gazelle/BUILD.bazel), [WORKSPACE](https://github.com/davidmcnamee/cpp_build/blob/gazelle/WORKSPACE).
 
 > When you run `bazel run //:gazelle`, it will generate code in [strings/BUILD.bazel](https://github.com/davidmcnamee/cpp_build/blob/gazelle/strings/BUILD.bazel) and [BUILD.bazel](https://github.com/davidmcnamee/cpp_build/blob/gazelle/BUILD.bazel).
+> From there, you can run `bazel run //:cpp_build` to run the program.
 
 > Note: Gazelle doesn't currently support C++, so I had to translate the project to Go. You may notice several differences, but it is functionally equivalent.
 
