@@ -1,11 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@bazel_gazelle//:def.bzl", "gazelle")
 
-cc_binary(
-    name = "app",
-    srcs = [
-        "main.cc",
-    ],
-    deps = [
-        "//strings:strings",
-    ]
-)
+# gazelle:prefix github.com/davidmcnamee/cpp_build
+gazelle(name = "gazelle")
